@@ -1,0 +1,115 @@
+// ion-toolbar {
+//   --background: #f5f5f3;
+// }
+ion-title{
+  text-align: center;
+}
+
+ion-content {
+  --background: #f5f5f3;
+  height: 100vh;
+
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+    .login-img{
+        width: 80px;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 25px;
+      color: #010100;
+      margin-bottom: 15px;
+    }
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+    .example-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+
+      .example-full-width {
+        width: 100%;
+
+        ion-col {
+          padding-right: 12px;
+        }
+      }
+
+      .example-container .mat-form-field + .mat-form-field {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  // #buttons{
+  //   text-align: center;
+  // }
+
+  // .btn{
+  //   width: 49.5%;
+  // }
+
+  #btn-policy{
+    width: 100%;
+  }
+
+  #terms-head {
+    color: grey;
+  }
+
+  .terms-field {
+    text-decoration: none;
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+  }
+
+  #divide {
+    width: 100%;
+  }
+
+  .divider-1 {
+    width: 48%;
+  }
+  .divider-2 {
+    width: 48%;
+  }
+  mat-divider {
+    margin-top: 10px;
+  }
+
+  #or {
+    width: 4%;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    text-align: center;
+  }
+
+  .btn-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+//   #login-btn-2{
+//     width: 460px;
+//   }
+
+  h4 {
+    //   text-align: center;
+    //   color: grey;
+    justify-content: left;
+  }
+}

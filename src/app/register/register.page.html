@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="light">
+      Register
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="light" href="home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="light" href="login">
+        <ion-icon name="log-in-outline" slot="end" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div id="header">
+    <ion-avatar>
+      <img class="login-img" src="../../assets/images/register image.png">
+    </ion-avatar>
+    <h1>Register</h1>
+  </div> -->
+
+  <div id="form">
+    <form class="example-form" [formGroup]="registerForm">
+      <ion-grid class="example-full-width">
+        <ion-row>
+          <ion-col>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Full Name</mat-label>
+              <input type="text" matInput formControlName="fullName" placeholder="Enter full name">
+              <mat-error *ngIf="fullName.hasError('required')">
+                Full Name <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="example-container">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Create your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.hasError('required')">
+                  Password <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Mobile</mat-label>
+              <span matPrefix>+91 &nbsp;</span>
+              <input type="tel" formControlName="mobile" matInput placeholder="555-555-1234">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+              <mat-error *ngIf="mobile.hasError('required')">
+                Password <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid id="btn-policy">
+        <ion-row>
+          <ion-col>
+            <p id="terms-head">By clicking Register, you are agree with <a class="terms-field" href="">Terms &
+                Condition</a> and <a class="terms-field" href="">Privecy Policy</a></p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <span *ngIf="isRegister==false; then save; else update;"></span>
+            <ng-template #save>
+              <ion-button class="btn" name="btnSave" color="success" shape="round" expand="full" id="register-btn"
+                (click)="saveRegisterData()" [disabled]="registerForm.invalid">
+                <ion-icon name="person-add-outline" color="light" slot="end"></ion-icon>
+                Register
+              </ion-button>
+            </ng-template>
+            <ng-template #update>
+              <ion-button class="btn" name="btnUpdate" color="success" shape="round" expand="full" id="register-btn"
+                (click)="updateRegisterData()" [disabled]="registerForm.invalid">
+                <ion-icon name="duplicate-outline" color="light" slot="end"></ion-icon>
+                Update
+              </ion-button>
+            </ng-template>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button class="btn" name="btnReset" color="danger" shape="round" id="register-btn" expand="full"
+              (click)="resetRegisterData()">
+              <ion-icon name="refresh-circle-outline" color="light" slot="end"></ion-icon>
+              Reset
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid id="divide">
+        <ion-row>
+          <ion-col class="divider-1">
+            <mat-divider></mat-divider>
+          </ion-col>
+          <ion-col id="or">
+            or
+          </ion-col>
+          <ion-col class="divider-2">
+            <mat-divider></mat-divider>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button color="light" name="btnGoogle" id="register-btn-2" shape="round" expand="full">
+              <ion-icon slot="end" name="logo-google"></ion-icon>
+              Register with
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>

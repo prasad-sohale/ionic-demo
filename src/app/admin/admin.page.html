@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="light">Admin-Dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="light" href="home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <h1>Registerd Users</h1>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col><div>Full Name</div></ion-col>
+      <ion-col><div>Email</div></ion-col>
+      <ion-col><div>Password</div></ion-col>
+      <ion-col><div>Mobile</div></ion-col>
+      <ion-col><div>Action</div></ion-col>
+    </ion-row>
+
+    <div *ngIf="myDataList.length">
+    <ion-row *ngFor="let myData of myDataList">
+      <ion-col><div>{{myData.fullName}}</div></ion-col>
+      <ion-col><div>{{myData.email}}</div></ion-col>
+      <ion-col><div>{{myData.password}}</div></ion-col>
+      <ion-col><div>{{myData.mobile}}</div></ion-col>
+      <ion-col>
+        <div>
+        <ion-button title="Edit" class="edit" (click)="editMyData(myData._id)">
+          <ion-icon name="create" slot="start"></ion-icon>
+          Edit
+        </ion-button>
+        <ion-button title="Delete" class="delete" (click)="deleteMyData(myData._id)">
+          <ion-icon name="trash" slot="start"></ion-icon>
+          Delete
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  </ion-grid>
+</ion-content>

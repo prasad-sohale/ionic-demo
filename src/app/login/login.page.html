@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="light">
+      Login
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="light" href="home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="light" href="register">
+        <ion-icon name="person-add-sharp" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div id="header">
+    <ion-avatar>
+      <img class="login-img" src="../../assets/images/Avatar-Profile-PNG.png">
+    </ion-avatar>
+  </div> -->
+
+  <div id="form">
+    <form class="example-form" [formGroup]="loginForm">
+      <ion-grid class="example-full-width">
+        <ion-row>
+          <ion-col>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="example-container">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Create your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.hasError('required')">
+                  Password <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="example-full-width-2">
+        <ion-row>
+          <ion-col>
+            <a id="forgot-pass" href="">Forgot Password</a>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button color="danger" name="btnLogin" shape="round" id="login-btn" expand="full" (click)="saveLoginData()"
+              [disabled]="loginForm.invalid">
+              <ion-icon name="log-in-outline" slot="end" color="light"></ion-icon>
+              Login
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid id="divide">
+        <ion-row>
+          <ion-col class="divider-1">
+            <mat-divider></mat-divider>
+          </ion-col>
+          <ion-col id="or">
+            or
+          </ion-col>
+          <ion-col class="divider-2">
+            <mat-divider></mat-divider>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="example-full-width-2">
+        <ion-row>
+          <ion-col>
+            <ion-button color="light" name="btnGoogle" shape="round" id="login-btn-2" expand="full">
+              <ion-icon slot="end" name="logo-google"></ion-icon>
+              Login with
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <h4>All your activity will remain private</h4>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+
+</ion-content>
