@@ -9,7 +9,6 @@ import { DataService } from '../data.service';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-
   registerForm!: FormGroup;
   dataId!: string;
   isRegister: boolean = false;
@@ -36,12 +35,12 @@ export class UserPage implements OnInit {
   }
 
   deleteMyData(dataId: any) {
-      this.dataService.deleteMyData(dataId).subscribe((response) => {
-        this.myDataList = response;
-        console.log('data deleting data =======>', this.myDataList);
-        alert('data deleted succefully');
-        this.getAllData();
-      });
+    this.dataService.deleteMyData(dataId).subscribe((response) => {
+      this.myDataList = response;
+      console.log('data deleting data =======>', this.myDataList);
+      alert('data deleted succefully');
+      this.getAllData();
+    });
   }
 
   editMyData(dataId: any) {
@@ -49,10 +48,9 @@ export class UserPage implements OnInit {
       relativeTo: this.activatedRoute,
     });
   }
-  
-  getLogout(){
-    localStorage.clear();
-    this.router.navigate(["login"]);
-  }
 
+  getLogout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }

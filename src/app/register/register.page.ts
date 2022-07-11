@@ -9,7 +9,6 @@ import { DataService } from '../data.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
   hide = true;
 
   registerForm!: FormGroup;
@@ -20,7 +19,7 @@ export class RegisterPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +39,7 @@ export class RegisterPage implements OnInit {
     this.registerForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,  Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       mobile: ['', [Validators.required, Validators.maxLength(10)]],
     });
   }
@@ -57,7 +56,6 @@ export class RegisterPage implements OnInit {
   get mobile() {
     return this.registerForm.get('mobile');
   }
- 
 
   get form() {
     return this.registerForm.controls;
@@ -91,19 +89,21 @@ export class RegisterPage implements OnInit {
     };
     console.log('Register Data Object is =====> ', registerDataObj);
 
-    this.dataService.updateRegisterData(this.id,registerDataObj).subscribe((response) => {
-      if (response && response != null && response != undefined) {
-        alert('Your Data Is Successfully Updated');
-      } else {
-        this.isRegister = false;
-      }
-    });
+    this.dataService
+      .updateRegisterData(this.id, registerDataObj)
+      .subscribe((response) => {
+        if (response && response != null && response != undefined) {
+          alert('Your Data Is Successfully Updated');
+        } else {
+          this.isRegister = false;
+        }
+      });
     this.registerForm.reset();
   }
 
   getDataById(dataId: any) {
     this.dataService.getDataById(dataId).subscribe((res) => {
-      const response = res?.[0] || {}
+      const response = res?.[0] || {};
       console.log('Check edit response ---->> ', response);
       this.registerForm = this.formBuilder.group({
         fullName: response.fullName,
@@ -114,8 +114,7 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  resetRegisterData(){
+  resetRegisterData() {
     this.registerForm.reset();
   }
-
 }

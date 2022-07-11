@@ -9,28 +9,28 @@ import { DataService } from '../data.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   hide = true;
-  
-  loginForm! : FormGroup
-  isLogin:boolean = false;
 
-  constructor(private dataService: DataService,
-    private router: Router,    
-    public formBuilder: FormBuilder,   
-    ) {}
+  loginForm!: FormGroup;
+  isLogin: boolean = false;
+
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    public formBuilder: FormBuilder
+  ) {}
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({ 
-      email: ['', [Validators.required, Validators.email]], 
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   get email() {
-    return this.loginForm.get("email")
+    return this.loginForm.get('email');
   }
   get password() {
-    return this.loginForm.get("password")
+    return this.loginForm.get('password');
   }
 
   get form() {
@@ -46,20 +46,15 @@ export class LoginPage implements OnInit {
 
     this.dataService.saveLoginData(loginObject).subscribe((response) => {
       if (response && response != null && response != undefined) {
-        localStorage.setItem("employerData", JSON.stringify(response));
-        if (response.role == "admin"){
-          this.router.navigate(["/admin"]);
-        }else{
-          this.router.navigate(["/user"]);
+        localStorage.setItem('employerData', JSON.stringify(response));
+        if (response.role == 'admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/user']);
         }
-        
-      }
-      else{
+      } else {
         this.isLogin = false;
       }
     });
-    
-
   }
-
 }

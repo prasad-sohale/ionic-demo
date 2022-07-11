@@ -9,7 +9,6 @@ import { DataService } from '../data.service';
   styleUrls: ['./admin.page.scss'],
 })
 export class AdminPage implements OnInit {
-
   registerForm!: FormGroup;
   dataId!: string;
   isRegister: boolean = false;
@@ -18,15 +17,13 @@ export class AdminPage implements OnInit {
   constructor(
     private router: Router,
     private dataService: DataService,
-    // private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute
   ) {
     this.getAllData();
   }
 
-  ngOnInit(): void {
-    //  this.getAllData();
-  }
+  ngOnInit(): void {}
+
   getAllData() {
     console.log(1);
     this.dataService.getAllData().subscribe((response) => {
@@ -36,18 +33,21 @@ export class AdminPage implements OnInit {
   }
 
   deleteMyData(dataId: any) {
-      this.dataService.deleteMyData(dataId).subscribe((response) => {
-        alert('data deleted succefully');
-        this.getAllData();
-      });
+    this.dataService.deleteMyData(dataId).subscribe((response) => {
+      alert('data deleted succefully');
+      this.getAllData();
+    });
   }
 
   editMyData(dataId: any) {
-    console.log(1234)
+    console.log(1234);
     this.router.navigate(['edit-data', { id: dataId }], {
       relativeTo: this.activatedRoute,
     });
   }
 
-
+  getLogout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }

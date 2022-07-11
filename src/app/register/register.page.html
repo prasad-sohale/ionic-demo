@@ -17,13 +17,6 @@
 </ion-header>
 
 <ion-content>
-  <!-- <div id="header">
-    <ion-avatar>
-      <img class="login-img" src="../../assets/images/register image.png">
-    </ion-avatar>
-    <h1>Register</h1>
-  </div> -->
-
   <div id="form">
     <form class="example-form" [formGroup]="registerForm">
       <ion-grid class="example-full-width">
@@ -58,7 +51,7 @@
           <ion-col>
             <div class="example-container">
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Create your password</mat-label>
+                <mat-label>Create Your Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide">
