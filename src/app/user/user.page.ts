@@ -52,5 +52,6 @@ export class UserPage implements OnInit {
   getLogout() {
     localStorage.clear();
     this.router.navigate(['login']);
+    alert('Your are Successfully Loged Out');
   }
 }

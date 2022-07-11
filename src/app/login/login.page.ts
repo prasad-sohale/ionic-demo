@@ -55,6 +55,7 @@ export class LoginPage implements OnInit {
       } else {
         this.isLogin = false;
       }
+      alert('Your are Successfully Loged In');
     });
   }
 }
